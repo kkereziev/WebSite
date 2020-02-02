@@ -1,0 +1,28 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+@if (User.Identity.IsAuthenticated)
+{
+    <div class="row">
+        <div class="col-md-3">
+            <h2>Shoes</h2>
+            <ul>
+                <li><a href="./Shoes">Shoes</a></li>
+            </ul>
+        </div>
+        <div class="col-md-3">
+            <h2>Clothes</h2>
+            <ul>
+                <li><a href="./Clothes">Clothes</a></li>
+            </ul>
+        </div>
+        <div class="col-md-3">
+            <h2>Jewelry</h2>
+            <ul>
+                <li><a href="./Jew">Clothes</a></li>
+            </ul>
+        </div>
+    </div>
+}

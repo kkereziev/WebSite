@@ -1,0 +1,40 @@
+﻿@page
+@model ProjectShop.Pages.Colors.BootsColor.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>ColorOfBoots</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="ColorOfBoots.Id" />
+            <div class="form-group">
+                <label asp-for="ColorOfBoots._ColorOfBoots" class="control-label"></label>
+                <input asp-for="ColorOfBoots._ColorOfBoots" class="form-control" />
+                <span asp-validation-for="ColorOfBoots._ColorOfBoots" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ColorOfBoots.ModelId" class="control-label"></label>
+                <select asp-for="ColorOfBoots.ModelId" class="form-control" asp-items="ViewBag.ModelId"></select>
+                <span asp-validation-for="ColorOfBoots.ModelId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

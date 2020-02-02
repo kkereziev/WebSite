@@ -1,0 +1,100 @@
+﻿@page
+@model ProjectShop.Pages.ModelsOfClothes.ModelsOfDress.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Models of Dresses</h1>
+<form asp-page="./Index" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Find by Name of Dress or Brand name:
+            <input type="text" name="SearchString" value="@Model.CurrentFilter" />
+            <input type="submit" value="Search" class="btn btn-default" />
+            <a asp-page="./Index"> Back to full List</a>
+        </p>
+    </div>
+</form>
+<p>
+    <a asp-page="Create">Create New Model</a> |
+    <a href="/Sizes/SizeOfDresses">Dress Sizes</a> |
+    <a href="/Colors/ColorOfDress">Dress Colors</a> |
+    <a href="/Cloathes/Dresses">Dress Brands</a> |
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <a asp-page="./Index" asp-route-sortOrder="@Model.NameSort"
+                   asp-route-currentFilter="@Model.CurrentFilter">
+                    @Html.DisplayNameFor(model => model.DressModel[0].Name)
+                </a>
+            </th>
+            <th>
+                <a asp-page="./Index" asp-route-sortOrder="@Model.DressIdSort"
+                   asp-route-currentFilter="@Model.CurrentFilter">
+                    @Html.DisplayNameFor(model => model.DressModel[0].Dress.Brand)
+                </a>
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DressModel[0].Colors)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DressModel[0].Size)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.DressModel)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Dress.Brand)
+                </td>
+                <td>
+                    @foreach (var color in item.Colors)
+                    {
+                        <a style="text-align: justify">
+                            @Html.DisplayFor(modelItem => color.ColorOfDress)
+                        </a>
+                    }
+                </td>
+                <td>
+                    @foreach (var size in item.Size)
+                    {
+                        <a style="text-align: justify">
+                            @Html.DisplayFor(modelItem => size.SizeOfDress)
+                        </a>
+                    }
+                </td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+@{
+    var prevDisabled = !Model.DressModel.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.DressModel.HasNextPage ? "disabled" : "";
+}
+<a asp-page="./Index"
+   asp-route-sortOrder="@Model.CurrentSort"
+   asp-route-pageIndex="@(Model.DressModel.PageIndex - 1)"
+   asp-route-currentFilter="@Model.CurrentFilter"
+   class="btn btn-default @prevDisabled">
+    Previous
+</a>
+<a asp-page="./Index"
+   asp-route-sortOrder="@Model.CurrentSort"
+   asp-route-pageIndex="@(Model.DressModel.PageIndex + 1)"
+   asp-route-currentFilter="@Model.CurrentFilter"
+   class="btn btn-default @nextDisabled">
+    Next
+</a>

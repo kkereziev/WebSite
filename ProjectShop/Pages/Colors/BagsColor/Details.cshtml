@@ -1,0 +1,31 @@
+﻿@page
+@model ProjectShop.Pages.Colors.BagsColor.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>ColorsOfBags</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ColorsOfBags.ColorOfBag)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ColorsOfBags.ColorOfBag)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ColorsOfBags.Bag)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ColorsOfBags.Bag.Id)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.ColorsOfBags.Id">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>

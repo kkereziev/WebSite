@@ -1,0 +1,40 @@
+﻿@page
+@model ProjectShop.Pages.Sizes.SizeOfDresses.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Dress Size</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="DressSize.Id" />
+            <div class="form-group">
+                <label asp-for="DressSize.SizeOfDress" class="control-label"></label>
+                <input asp-for="DressSize.SizeOfDress" class="form-control" />
+                <span asp-validation-for="DressSize.SizeOfDress" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DressSize.ModelId" class="control-label"></label>
+                <select asp-for="DressSize.ModelId" class="form-control" asp-items="ViewBag.ModelId"></select>
+                <span asp-validation-for="DressSize.ModelId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

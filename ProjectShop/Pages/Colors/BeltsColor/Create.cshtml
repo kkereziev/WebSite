@@ -1,0 +1,38 @@
+﻿@page
+@model ProjectShop.Pages.Colors.BeltsColor.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>ColorsOfBelts</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="ColorsOfBelts.ColorOfBelt" class="control-label"></label>
+                <input asp-for="ColorsOfBelts.ColorOfBelt" class="form-control" />
+                <span asp-validation-for="ColorsOfBelts.ColorOfBelt" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ColorsOfBelts.BeltId" class="control-label"></label>
+                <select asp-for="ColorsOfBelts.BeltId" class ="form-control" asp-items="ViewBag.BeltId"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

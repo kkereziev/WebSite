@@ -1,0 +1,38 @@
+﻿@page
+@model ProjectShop.Pages.Sizes.SandalsSize.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>SizeOfSandals</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="SizeOfSandals.SizeOfSandal" class="control-label"></label>
+                <input asp-for="SizeOfSandals.SizeOfSandal" class="form-control" />
+                <span asp-validation-for="SizeOfSandals.SizeOfSandal" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SizeOfSandals.SandalsId" class="control-label"></label>
+                <select asp-for="SizeOfSandals.SandalsId" class ="form-control" asp-items="ViewBag.SandalsId"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

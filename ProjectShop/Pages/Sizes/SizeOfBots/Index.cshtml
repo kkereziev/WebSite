@@ -1,0 +1,55 @@
+﻿@page
+@model ProjectShop.Pages.Sizes.SizeOfBots.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>Size of Boots</h1>
+<form asp-page="./Index" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Find by size:
+            <input type="text" name="SearchString" value="@Model.CurrentFilter" />
+            <input type="submit" value="Search" class="btn btn-default" />
+            <a asp-page="./Index"> Back to full List</a>
+        </p>
+    </div>
+</form>
+<p>
+    <a asp-page="Create">Create New</a> |
+    <a href="/ModelsOfShoes/ModelsOfBoots">Boots Models</a> |
+    <a href="/Colors/BootsColor">Coat Colors</a> |
+    <a href="/Shos/Bots">Boots Brands</a> |
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.SizeOfBoots[0].SizeOfBoot)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SizeOfBoots[0].Model)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.SizeOfBoots) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.SizeOfBoot)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Model.Name)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

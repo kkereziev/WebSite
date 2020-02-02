@@ -1,0 +1,88 @@
+﻿@page
+@model ProjectShop.Pages.Sizes.SizesOfBlouses.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Sizes of Blouses</h1>
+<form asp-page="./Index" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Find by size:
+            <input type="text" name="SearchString" value="@Model.CurrentFilter" />
+            <input type="submit" value="Search" class="btn btn-default" />
+            <a asp-page="./Index"> Back to full List</a>
+        </p>
+    </div>
+</form>
+<p>
+    <a asp-page="Create">Create New</a> |
+    <a href="/ModelsOfClothes/ModelsOfBlouses">Blouse Models</a> |
+    <a href="/Colors/ColorOfBlouses">Blouse Colors</a> |
+    <a href="/Cloathes/Blouses">Blouse Brands</a> |
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <a asp-page="./Index" asp-route-sortOrder="@Model.SizeOfBlouseSort"
+                   asp-route-currentFilter="@Model.CurrentFilter">
+                    @Html.DisplayNameFor(model => model.BlouseSize[0].SizeOfBlouse)
+                </a>
+            </th>
+            <th>
+                <a asp-page="./Index" asp-route-sortOrder="@Model.ModelIdSort"
+                   asp-route-currentFilter="@Model.CurrentFilter">
+                    @Html.DisplayNameFor(model => model.BlouseSize[0].Model.Name)
+                </a>
+            </th>
+            <th>
+                <a asp-page="./Index" asp-route-sortOrder="@Model.BlouseIdSort"
+                   asp-route-currentFilter="@Model.CurrentFilter">
+                    @Html.DisplayNameFor(model => model.BlouseSize[0].Model.Blouse.Brand)
+                </a>
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.BlouseSize)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SizeOfBlouse)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Model.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Model.Blouse.Brand)
+                </td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+@{
+    var prevDisabled = !Model.BlouseSize.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.BlouseSize.HasNextPage ? "disabled" : "";
+}
+<a asp-page="./Index"
+   asp-route-sortOrder="@Model.CurrentSort"
+   asp-route-pageIndex="@(Model.BlouseSize.PageIndex - 1)"
+   asp-route-currentFilter="@Model.CurrentFilter"
+   class="btn btn-default @prevDisabled">
+    Previous
+</a>
+<a asp-page="./Index"
+   asp-route-sortOrder="@Model.CurrentSort"
+   asp-route-pageIndex="@(Model.BlouseSize.PageIndex + 1)"
+   asp-route-currentFilter="@Model.CurrentFilter"
+   class="btn btn-default @nextDisabled">
+    Next
+</a>

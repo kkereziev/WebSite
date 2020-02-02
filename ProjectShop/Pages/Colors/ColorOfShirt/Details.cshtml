@@ -1,0 +1,31 @@
+﻿@page
+@model ProjectShop.Pages.Colors.ColorOfShirt.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>ShirtColor</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ShirtColor.ColorOfShirt)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ShirtColor.ColorOfShirt)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ShirtColor.Shirt)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ShirtColor.Shirt.Id)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.ShirtColor.Id">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>

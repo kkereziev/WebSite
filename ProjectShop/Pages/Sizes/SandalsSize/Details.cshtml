@@ -1,0 +1,31 @@
+﻿@page
+@model ProjectShop.Pages.Sizes.SandalsSize.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>SizeOfSandals</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SizeOfSandals.SizeOfSandal)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.SizeOfSandals.SizeOfSandal)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SizeOfSandals.Sandals)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.SizeOfSandals.Sandals.Id)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.SizeOfSandals.Id">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>
